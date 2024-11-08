@@ -24,11 +24,32 @@ h2 {
   margin-top: 30px;
   text-align: center;
 }
+#intro{
+  font-size: 24px;
+}
 
 h3 {
   font-size: 24px;
   margin-top: 20px;
   color: rgb(55, 55, 106);
+}
+
+h4{
+  font-size: 20px;
+
+}
+
+#data_pic{
+  display:flex;
+  margin: auto;
+}
+
+.previewData{
+  display: flex;
+  justify-content: center;
+  gap: 20px; 
+  flex-wrap: wrap; 
+  padding: 20px;
 }
 
 p {
@@ -286,10 +307,38 @@ body.dark-mode #sign-now-button{
 }
 
 .petition-para{
-  width: 55%;
+  width: 50%;
   padding-right: 10px;
 }
-.signature{
-  width: 45%;
+.signatures{
+  width: 40%;
   padding-right: 10px;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column; /* Aligns all items vertically */
+  align-items:self-start;
+}
+.sign-petition{
+  margin-bottom: 30px;
+}
+
+
+.error {
+  border-style: solid;
+  border-width: 2px;
+  border-color: red;
+  background:pink;
+}
+
+.depression-stats li {
+  border: none;
+  margin-bottom: 10px; /* Space between items */
+  padding: 10px; /* Space around text */
+  font-size: 1.1em; /* Larger text for emphasis */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+.depression-stats li strong {
+  color: #333; /* Dark color for percentages */
+  font-weight: bold;
 }
