@@ -342,3 +342,16 @@ body.dark-mode #sign-now-button{
   color: #333; /* Dark color for percentages */
   font-weight: bold;
 }
+
+.revealable{
+  position: relative;
+  transform: translateY(150px);
+  opacity: 0;
+  transition: all 2s ease; 
+}
+
+.revealable.active {
+  transform: translateY(0px); /* Moves element back to original position */
+  opacity: 1; /* Makes the element fully visible */
+}
+
