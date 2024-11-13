@@ -8,13 +8,10 @@ const toggleDarkMode = () => {
 themeButton.addEventListener("click", toggleDarkMode);
 
 let signNowButton = document.querySelector("#sign-now-button")
-const addSignature = (event) => {
+const addSignature = (person) => {
     // event.preventDefault; 
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const craft = document.getElementById("craft").value;
     const newSignature = document.createElement("p");
-    newSignature.textContent = ' 🖊️' + name + ' wants to contribute in' + craft;
+    newSignature.textContent = ' 🖊️'+ person.name +' wants to contribute in' + person.craft;
 // Find the signatures section and append the new signature
 const signaturesSection = document.querySelector(".signatures");
 signaturesSection.appendChild(newSignature);
@@ -33,32 +30,55 @@ const validateForm = () => {
     let containsErrors = false;
   
     var petitionInputs = document.getElementById("sign-petition").elements;
+    let person ={
+        name: petitionInputs["name"].value,
+        email: petitionInputs["email"].value,
+        craft: petitionInputs["craft"].value
+    }
     // TODO: Loop through all inputs
     for(let i = 0; i < petitionInputs.length; i++){
-        if (petitionInputs[i].value.length < 2) {
+        const email = document.getElementById('email');
+        if (person.name.length < 2) {
             containsErrors = true; 
-            petitionInputs[i].classList.add('error');
+            petitionInputs["name"].classList.add('error');
             
         }
         else {
-            petitionInputs[i].classList.remove('error');
-          }
+            petitionInputs["name"].classList.remove('error');
+        }
+        if ( person.craft.length < 2) {
+            containsErrors = true; 
+            petitionInputs["craft"].classList.add('error');
+            
+        }
+        else {
+            petitionInputs["craft"].classList.remove('error');
+        }
+        if ( person.email.length < 2) {
+            containsErrors = true; 
+            petitionInputs["email"].classList.add('error');
+            
+        }
+        else {
+            petitionInputs["email"].classList.remove('error');
+        }
+        if (!email.value.includes('.com')) {
+            containsErrors = true; 
+            petitionInputs["email"].classList.add('error');
+        }
+        else {
+            petitionInputs["email"].classList.remove('error');
+        }
+
     }
 
     if(containsErrors == false){
-        addSignature(); 
+        addSignature(person); 
+        toggleModal(person); 
         for(let i = 0; i < petitionInputs.length; i++){
             petitionInputs[i].value = "";
             containsErrors = false;
         }
-    }
-    const email = document.getElementById('email');
-    if (!email.value.includes('.com')) {
-        containsErrors - true; 
-        email.classList.add('error');
-    }
-    else {
-        email.classList.remove('error');
     }
     
     // TODO: Validate the value of each input
@@ -96,3 +116,46 @@ const validateForm = () => {
   };
 
   window.addEventListener("scroll", reveal);
+
+  const reduceMotion =() => {
+    animation.transitionDelay = 7; 
+    for(i =0; i < revealableContainers.length; i++){
+        revealableContainers[i].style.transitionDelay = animation.transitionDelay;
+    }
+  }
+  button.addEventListener("click", reduceMotion); 
+
+
+  const toggleModal = (person) => {
+    const modal = document.getElementById("thanks-modal");
+    const modalContent = document.getElementById("thanks-modal-content");
+
+    // Show the modal
+    modal.style.display = "flex"; 
+    modalContent.textContent = 'Thank you so much ' + person.name + ' for joining us!'; 
+
+    // Hide the modal after 4 seconds
+    setTimeout(() => {
+        modal.style.display = "none"; 
+        clearInterval(intervalID); 
+    }, 4000);
+
+    const intervalId = setInterval(scaleImage, 500);
+
+};
+
+let scaleFactor = 1; 
+const modalImage = document.getElementById('img-modal');
+const scaleImage =() => {
+    scaleFactor = scaleFactor === 1 ? 0.8 : 1; 
+    modalImage.style.transform = `scale(${scaleFactor})`; 
+}
+
+// let button_modal = document.getElementById('button-modal');
+
+// const close_modal =() => {
+//     modal.style.display = "none";
+// }
+// button_modal.addEventListener("click", close_modal); 
+  
+

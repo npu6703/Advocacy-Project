@@ -267,7 +267,10 @@ body.dark-mode {
   background-color:  rgb(55, 55, 106);
   color: white;
 }
-
+body.dark-mode .depression-stats li strong {
+  color: white; /* Dark color for percentages */
+  font-weight: bold;
+}
 body.dark-mode .header {
   background-color: rgb(55, 55, 106);
   color: white;
@@ -331,6 +334,8 @@ body.dark-mode #sign-now-button{
 }
 
 .depression-stats li {
+  display:flex ;
+  align-items: start;
   border: none;
   margin-bottom: 10px; /* Space between items */
   padding: 10px; /* Space around text */
@@ -340,6 +345,7 @@ body.dark-mode #sign-now-button{
 
 .depression-stats li strong {
   color: #333; /* Dark color for percentages */
+padding-right: 6px;
   font-weight: bold;
 }
 
@@ -355,3 +361,63 @@ body.dark-mode #sign-now-button{
   opacity: 1; /* Makes the element fully visible */
 }
 
+/* the modal that covers the background and prevents user interactions */
+.modal {
+  display: none; /* hides the modal from view by default*/
+  position: fixed; /* keeps the modal in one place */
+  z-index: 2; /* positions the modal on top of all other elements on the screen */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgba(0, 0, 0, 0.4); /* 40% opacity black - other elements can still be seen */
+  flex-direction: column; /* these flexbox rules center the content on the screen */
+  align-items: center;
+  justify-content: center;
+}
+
+/* box that contains all the content and images */
+.modal-content {
+  background-color: rgb(231, 234, 162); /* update the colors and font sizes as you like */
+  color: black;
+  text-align: center;
+  font-size: 3rem;
+  display: flex; /* adds flexbox to center all items */
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+}
+
+#thanks-modal-content {
+  width: 20rem; /* sets a default width for the text container */
+}
+
+#modal-text-container {
+  display: flex; /* adds flexbox to center the text and buttons (stretch feature) */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-btn{
+  position:relative; /* Position it relative to modal content */
+  top: -338px; /* Distance from the top */
+  left: -165px;
+  background-color: white;
+  border-radius: 0%;
+  width: 30px; /* Square width */
+  height: 30px;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  z-index: 10;
+}
+.modal-btn:hover {
+  background-color: #ddd; /* Button changes color when hovered */
+}
