@@ -123,7 +123,7 @@ const validateForm = () => {
         revealableContainers[i].style.transitionDelay = animation.transitionDelay;
     }
   }
-  button.addEventListener("click", reduceMotion); 
+  window.addEventListener("click", reduceMotion); 
 
 
   const toggleModal = (person) => {
@@ -151,11 +151,13 @@ const scaleImage =() => {
     modalImage.style.transform = `scale(${scaleFactor})`; 
 }
 
-// let button_modal = document.getElementById('button-modal');
+let button_modal = document.getElementById('button-modal');
 
-// const close_modal =() => {
-//     modal.style.display = "none";
-// }
-// button_modal.addEventListener("click", close_modal); 
+const close_modal = () => {
+    const modal = document.getElementById("thanks-modal");
+    modal.style.display = "none";  // Hide the modal when close button is clicked
+}
+
+button_modal.addEventListener("click", close_modal);
   
 

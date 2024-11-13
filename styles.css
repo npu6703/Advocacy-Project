@@ -390,6 +390,8 @@ padding-right: 6px;
 
 #thanks-modal-content {
   width: 20rem; /* sets a default width for the text container */
+  font-size: 30px;
+  
 }
 
 #modal-text-container {
@@ -400,24 +402,28 @@ padding-right: 6px;
 }
 
 .modal-btn{
+  all: unset; 
   position:relative; /* Position it relative to modal content */
-  top: -338px; /* Distance from the top */
-  left: -165px;
-  background-color: white;
+  top: -445px; /* Distance from the top */
+  left: -173px;
+  background: none;
   border-radius: 0%;
+  border: none;
   width: 30px; /* Square width */
   height: 30px;
   border-radius: 4px;
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: white;
   color: black;
   cursor: pointer;
   z-index: 10;
 }
-.modal-btn:hover {
-  background-color: #ddd; /* Button changes color when hovered */
+.modal-btn:hover{
+  background: none; /* Button changes color when hovered */
+  color: black;
+  transform: translateY(0px);
 }
+
