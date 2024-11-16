@@ -117,14 +117,22 @@ const validateForm = () => {
 
   window.addEventListener("scroll", reveal);
 
-  const reduceMotion =() => {
-    animation.transitionDelay = 7; 
-    for(i =0; i < revealableContainers.length; i++){
-        revealableContainers[i].style.transitionDelay = animation.transitionDelay;
+  const reduceMotion = () => {
+    // Update animation settings to reduce or disable motion
+    animation.transitionDuration = '0s'; // Disable duration
+    animation.transitionDelay = '0s'; // No delay
+    animation.revealDistance = 50; // Reduce reveal distance
+    
+    for (let i = 0; i < revealableContainers.length; i++) {
+      // Apply the updated animation properties
+      revealableContainers[i].style.transition = `
+        ${animation.transitionProperty} ${animation.transitionDuration} 
+        ${animation.transitionTimingFunction} ${animation.transitionDelay}`;
     }
-  }
-  window.addEventListener("click", reduceMotion); 
-
+  };
+  
+  let reduceMotionButton = document.getElementById("motion-button");
+  reduceMotionButton.addEventListener("click", reduceMotion);
 
   const toggleModal = (person) => {
     const modal = document.getElementById("thanks-modal");
